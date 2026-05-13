@@ -38,3 +38,21 @@ driverYear()
 def dataVisual1():
     F1db.plot(kind='bar', x='Driver', y='Points')
 dataVisual1()
+
+def UIf1data():
+    print("|-=-=-=-=-=-= F1 Driver's Dataset =-=-=-=-=-=-=|")
+    print("|    1 - view Dataset: driver nationality      |")
+    print("|    2 - view dataset: Driver decade           |")
+    print("|    3 - view dataset: main data               |")
+    print("|    4 - view dataset: Full data               |")
+    print("|    5 - View visualisation                    |")
+    print("|    6 - Search or filter data                 |")
+    print("|    7 - Update a data entry                   |")
+    print("|    8 - Save changes                          |")
+    print("|    9 - Exit                                  |") 
+    print("|=-=-=-=-=-=-=-=-=-=-=-=AA=-=-=-=-=-=-=-=-=-=-=|")
+    UI = "null"
+    while UI != 'finished':
+        ans = input("Enter Action according to number: ")
+        if ans == 1:
+            print

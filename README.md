@@ -2,4 +2,7 @@
 my first assesment task for computing technology
 
 ## My hypothesis
+the nationality and decade of a driver directly would affect their preformance, drivers of 2010's and british drivers I would assume to be some of the best talents within the sport.
+
+## paragraph
 does the driver from an older age within the sport make a better talent? Or does the nationality of the driver change their talent? with the debuts of generational drivers like lewis hamilton and max verstappen i want to see if the active decade of these drivers does correlate with their overall talent, or with unsual drivers like fanco colapinto or logan sargent i want to see if their active decade and their nationality play in a role in their overall preformance as a driver. Caluclated via their pole positions, race wins, lifetime points and active years to reach an accurate result. I believe that after a driver goes past their 4th year they underpreform and would lose their talent, this data will use the top 100 drivers to calculate what talent comes with time.
