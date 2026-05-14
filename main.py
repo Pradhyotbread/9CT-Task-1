@@ -1,7 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import time 
-import sys 
+from Data_module import(UIf1data, dataVisual1, DataMain, driverNational, driverDecade, F1db)
 
-F1df = pd.read_csv("U:\computingTech\9CT-Task-1\F1Drivers_Dataset.csv", on_bad_lines='skip')
-print(F1df)
+UIf1data()
+
+print("null")

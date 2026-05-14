@@ -65,10 +65,7 @@ def UIf1data():
        print("|    8 - Save changes                          |")
        print("|    9 - Exit                                  |") 
        print("|=-=-=-=-=-=-=-=-=-=-=-=UA=-=-=-=-=-=-=-=-=-=-=|")
-       try:
-           ans = input("|Enter Action according to number: ")
-       except: 
-            ValueError #fix this
+       ans = input("|Enter Action according to number: ")
        if ans == '1':
             time.sleep(2)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
@@ -120,7 +117,8 @@ def UIf1data():
        else:
             print('|input not recognised                          |')
             time.sleep(3)
-    
-   
-    
+
+
+# practice code
 UIf1data()
+
