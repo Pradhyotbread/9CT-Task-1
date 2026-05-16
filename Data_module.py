@@ -1,94 +1,80 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import time
-F1db = pd.read_csv('U:\computingTech\9CT-Task-1\F1Drivers_Dataset.csv', on_bad_lines='skip')
-driverDecade = F1db.drop(columns=[])
+F1db = pd.read_csv('F1Drivers_Dataset.csv', on_bad_lines='skip')
+driverAge = F1db.drop(columns=['Nationality', 'Race_Wins'])
 #---Functions---------------------------------------------------------------------------------------------------------#
 
-def driverNational():
-    DriverOrigin = F1db.drop(columns=[])
-    print(DriverOrigin)
-
-def DataMain():
-    TestedData = F1db.drop(columns=[])
-    print(TestedData)
-
 def preview():
-    driverDecade.xs
+    print(driverAge)
 
 
 def dataVisual1():
-    F1db.plot(kind='bar', x='Driver', y='Points')
+    F1db.plot(x='Driver', y='Points', kind='bar')
+    plt.title('F1 Drivers and their lifetime points')
+    plt.xlabel('Driver')
+    plt.ylabel('Points')
+    plt.kind = 'bar'
+    plt.show()
 
+dataVisual1()
 
 def UIf1data():
     UI = "null"
     while UI != 'finished':
        print("|-=-=-=-=-=-= F1 Driver's Dataset =-=-=-=-=-=-=|")
-       print("|    1 - view Dataset: driver nationality      |")
-       print("|    2 - view dataset: Driver decade           |")
-       print("|    3 - view dataset: main data               |")
-       print("|    4 - view dataset: Full data               |")
-       print("|    5 - View visualisation                    |")
-       print("|    6 - Search or filter data                 |")
-       print("|    7 - Update a data entry                   |")
-       print("|    8 - Save changes                          |")
-       print("|    9 - Exit                                  |") 
+       print("|    1 - view Dataset: Applied Data            |")
+       print("|    2 - view dataset: Full data               |")
+       print("|    3 - View visualisation                    |")
+       print("|    4 - Search or filter data                 |")
+       print("|    5 - Update a data entry                   |")
+       print("|    6 - Save changes                          |")
+       print("|    7 - Exit                                  |") 
        print("|=-=-=-=-=-=-=-=-=-=-=-=UA=-=-=-=-=-=-=-=-=-=-=|")
        ans = input("|Enter Action according to number: ")
        if ans == '1':
             time.sleep(2)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            driverNational()
+            print(driverAge)
             time.sleep(5)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print("|Returning to start...                          |")
        elif ans == '2':
             time.sleep(2)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            preview()
+            print(F1db)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print("|Returing to start...                          |")
        elif ans == '3':
             time.sleep(2)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            DataMain()
+            dataVisual1()
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print("|Returing to start...                          |")
        elif ans == '4':
             time.sleep(2)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            F1db
+            dataVisual1() # unfinished value
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print("|Returing to start...                          |")
        elif ans == '5':
             time.sleep(2)
-            print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            dataVisual1() # unfinished value
-            print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            print("|Returing to start...                          |")
-       elif ans == '6':
-            time.sleep(2)
             #blank value of current
             print("e")
-       elif ans == '7':
+       elif ans == '6':
             time.sleep(2)
             #finish later
             print("null")
-       elif ans == '8':
-            time.sleep(2)
-            #unfinished
-            print("null")
-       elif ans == '9':
+       elif ans == '7':
             print('|Thank you for checking the database           |')
-            print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
+            print('|=-=-=-=-=-=-=-=-=-=END=-=-=-=-=-=-=--=-=-=-=-=|')
             time.sleep(1)
             UI = "finished"
        else:
-            print('|input not recognised                          |')
+            print('|     - input not recognised                   |')
             time.sleep(3)
 
 
 # practice code
-UIf1data()
+
 
