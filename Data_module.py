@@ -35,26 +35,26 @@ def dataVisual3():
 
 def filterData():
 
-    print("Available columns: Nationality, Race_Wins, Decade")
-    column_name = input("Enter column name to filter by: ").strip()  
+    print("filterable columns: Nationality, Decade")
+    column_name = input("Enter column name to filter by: ").strip().title()  
     if column_name not in F1db.columns:
           print(f"|   - Column '{column_name}' not found   |")
           return
     else: 
-         filter_value = input(f"Enter value to filter {column_name} by: ").strip()
+         filter_value = input(f"Enter value to filter {column_name} by: ").strip().title()
          filtered_data = F1db[F1db[column_name] == filter_value]
          print(filtered_data)
 
 def dataUpdate():
     print("|=-=-=-=-=-=-=-=-=-=-=-=UA=-=-=-=-=-=-=-=-=-=-=|")
     print("Available columns: Driver, Nationality, Race_Wins, Points, Decade")
-    driver_name = input("Enter driver name to update: ").strip()
+    driver_name = input("Enter driver name to update: ").strip().title()
     
     if driver_name not in F1db['Driver'].values:
         print(f"|   - Driver '{driver_name}' not found    |")
         return
     
-    column_name = input("Enter column name to update: ").strip()
+    column_name = input("Enter column name to update: ").strip().title()
     if column_name not in F1db.columns:
         print(f"|   - Column '{column_name}' not found    |")
         return
@@ -69,11 +69,11 @@ def dataUpdate():
 
 def addEntry():
       print("|=-=-=-=-=-=-=-=-=-=-=-=UA=-=-=-=-=-=-=-=-=-=-=|")
-      driver_name = input("Enter driver name: ").strip()
-      nationality = input("Enter nationality: ").strip()
+      driver_name = input("Enter driver name: ").strip().title()
+      nationality = input("Enter nationality: ").strip().title()
       race_wins = input("Enter race wins: ").strip()
       points = input("Enter points: ").strip()
-      decade = input("Enter decade: ").strip()
+      decade = input("Enter decade: ").strip().title()
                     
       new_entry = pd.DataFrame({
                         'Driver': [driver_name],
@@ -87,14 +87,13 @@ def addEntry():
 
 def removeEntry():
      print("|=-=-=-=-=-=-=-=-=-=-=-=UA=-=-=-=-=-=-=-=-=-=-=|")
-     driver_name = input("Enter driver name to remove: ").strip()
+     driver_name = input("Enter driver name to remove: ").strip().title()
      if driver_name in F1db['Driver'].values:
       F1db = F1db[F1db['Driver'] != driver_name]
-      print(f"|   - Driver '{driver_name}' removed         |")
+      print(f"|   - Driver: '{driver_name}' removed        |")
      else:
-      print(f"|   - Driver '{driver_name}' not found       |")
+      print(f"|   - Driver: '{driver_name}' not found      |")
 
-    
 def UIf1data():
     UI = "null"
     while UI != 'finished':
