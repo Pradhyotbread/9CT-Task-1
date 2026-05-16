@@ -18,14 +18,16 @@ def dataVisual1():
     plt.show()
 
 def dataVisual2():
-    F1db.plot(x='Nationality', y='Points', kind='bar')
+    nationality_points = F1db.groupby('Nationality')['Points'].sum().sort_values(ascending=False)
+    nationality_points.plot(kind='bar')
     plt.title('lifetime points by Nationality')
     plt.xlabel('Nationality')
     plt.ylabel('Points')
     plt.show()
 
 def dataVisual3():
-    F1db.plot(x='Decade', y='Points', kind='bar')
+    decade_points = F1db.groupby('Decade')['Points'].sum().sort_index()
+    decade_points.plot(kind='bar')
     plt.title('lifetime points by decade')
     plt.xlabel('Decade')
     plt.ylabel('Points')
@@ -37,7 +39,7 @@ def UIf1data():
        print("|-=-=-=-=-=-= F1 Driver's Dataset =-=-=-=-=-=-=|")
        print("|    1 - view Dataset: Applied Data            |")
        print("|    2 - view dataset: Full data               |")
-       print("|    3 - View visualisations                    |")
+       print("|    3 - View visualisations                   |")
        print("|    4 - Search or filter data                 |")
        print("|    5 - Update a data entry                   |")
        print("|    6 - Save changes                          |")
@@ -50,13 +52,13 @@ def UIf1data():
             print(driverAge)
             time.sleep(5)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            print("|Returning to start...                          |")
+            print("|Returning to start...                         |")
        elif ans == '2':
             time.sleep(2)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print(F1db)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            print("|Returing to start...                          |")
+            print("|Returning to start...                         |")
        elif ans == '3':
             time.sleep(2)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
@@ -72,24 +74,22 @@ def UIf1data():
             elif ans2 == '2':
                     time.sleep(2)
                     print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-                    #unfinished value
                     dataVisual2()
             elif ans2 == '3':
                     time.sleep(2)
                     print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-                    #unfinished value
                     dataVisual3()
             else:
                     print('|     - input not recognised                   |')
                     time.sleep(3)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            print("|Returing to start...                          |")
+            print("|Returning to start...                         |")
        elif ans == '4':
             time.sleep(2)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             dataVisual1() # unfinished value
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            print("|Returing to start...                          |")
+            print("|Returning to start...                         |")
        elif ans == '5':
             time.sleep(2)
             #blank value of current
