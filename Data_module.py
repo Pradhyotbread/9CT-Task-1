@@ -33,29 +33,42 @@ def dataVisual3():
     plt.ylabel('Points')
     plt.show()
 
+def filterData():
+
+    print("Available columns: Nationality, Race_Wins, Decade")
+    column_name = input("Enter column name to filter by: ").strip()  
+    if column_name not in F1db.columns:
+          print(f"|   - Column '{column_name}' not found   |")
+          return
+    else: 
+         filter_value = input(f"Enter value to filter {column_name} by: ").strip()
+         filtered_data = F1db[F1db[column_name] == filter_value]
+         print(filtered_data)
+
 def dataUpdate():
-    print("|-=-=-=-=-=-= Update Data Entry =-=-=-=-=-=-=|")
+    print("|=-=-=-=-=-=-=-=-=-=-=-=UA=-=-=-=-=-=-=-=-=-=-=|")
     print("Available columns: Driver, Nationality, Race_Wins, Points, Decade")
     driver_name = input("Enter driver name to update: ").strip()
     
     if driver_name not in F1db['Driver'].values:
-        print(f"|   - Driver '{driver_name}' not found in dataset       |")
+        print(f"|   - Driver '{driver_name}' not found    |")
         return
     
     column_name = input("Enter column name to update: ").strip()
     if column_name not in F1db.columns:
-        print(f"|   - Column '{column_name}' not found                    |")
+        print(f"|   - Column '{column_name}' not found    |")
         return
     
     new_value = input(f"Enter new value for {column_name}: ").strip()
     
     try:
         F1db.loc[F1db['Driver'] == driver_name, column_name] = new_value
-        print(f"|  Updated {driver_name}'s {column_name} to {new_value}|")
+        print(f"|  Updated {driver_name}'s {column_name} to {new_value} |")
     except Exception as e:
-        print(f"|   - Error updating data: {str(e)}             |")
+        print(f"|   - Error updating data: {str(e)}         |")
 
 def addEntry():
+      print("|=-=-=-=-=-=-=-=-=-=-=-=UA=-=-=-=-=-=-=-=-=-=-=|")
       driver_name = input("Enter driver name: ").strip()
       nationality = input("Enter nationality: ").strip()
       race_wins = input("Enter race wins: ").strip()
@@ -70,45 +83,39 @@ def addEntry():
                         'Decade': [decade]
                     })
       F1db = pd.concat([F1db, new_entry], ignore_index=True)
-      print(f"|   - Driver '{driver_name}' added successfully  |")
+      print(f"|   - Driver '{driver_name}' added           |")
 
 def removeEntry():
+     print("|=-=-=-=-=-=-=-=-=-=-=-=UA=-=-=-=-=-=-=-=-=-=-=|")
      driver_name = input("Enter driver name to remove: ").strip()
      if driver_name in F1db['Driver'].values:
       F1db = F1db[F1db['Driver'] != driver_name]
-      print(f"|   - Driver '{driver_name}' removed successfully|")
+      print(f"|   - Driver '{driver_name}' removed         |")
      else:
-      print(f"|   - Driver '{driver_name}' not found         |")
+      print(f"|   - Driver '{driver_name}' not found       |")
 
     
 def UIf1data():
     UI = "null"
     while UI != 'finished':
        print("|-=-=-=-=-=-= F1 Driver's Dataset =-=-=-=-=-=-=|")
-       print("|    1 - view Dataset: Applied Data            |")
-       print("|    2 - view dataset: Full data               |")
-       print("|    3 - View visualisations                   |")
-       print("|    4 - Search or filter data                 |")
-       print("|    5 - Update a data entry                   |")
-       print("|    6 - add/remove data entry                 |")
-       print("|    7 - Save changes                          |")
+       print("|    1 - view dataset: Full data               |")
+       print("|    2 - View visualisations                   |")
+       print("|    3 - Search or filter data                 |")
+       print("|    4 - Update a data entry                   |")
+       print("|    5 - add/remove data entry                 |")
+       print("|    6 - Save changes                          |")
        print("|    0 - Exit                                  |") 
        print("|=-=-=-=-=-=-=-=-=-=-=-=UA=-=-=-=-=-=-=-=-=-=-=|")
        ans = input("|Enter Action according to number: ")
+
        if ans == '1':
-            time.sleep(2)
-            print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            print(driverAge)
-            time.sleep(5)
-            print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            print("|Returning to start...                         |")
-       elif ans == '2':
             time.sleep(2)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print(F1db)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print("|Returning to start...                         |")
-       elif ans == '3':
+       elif ans == '2':
             time.sleep(2)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print('|   1 - data visualisation: Points by driver   |')
@@ -133,19 +140,19 @@ def UIf1data():
                     time.sleep(3)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print("|Returning to start...                         |")
-       elif ans == '4':
+       elif ans == '3':
             time.sleep(2)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            dataVisual1()
+            filterData()
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print("|Returning to start...                         |")
-       elif ans == '5':
+       elif ans == '4':
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             dataUpdate()
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print("|Returning to start...                         |")
             time.sleep(2)
-       elif ans == '6':
+       elif ans == '5':
              print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
              print("|   1 - add data entry                         |")
              print("|   2 - remove data entry                      |")
@@ -166,7 +173,7 @@ def UIf1data():
                          time.sleep(3)
              print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
              print("|Returning to start...                         |")
-       elif ans == '7':
+       elif ans == '6':
             time.sleep(2)
             F1db.to_csv('F1Drivers_Dataset.csv', index=False)
             print('|   - Data saved to F1Drivers_Dataset.csv      |')
