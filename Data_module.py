@@ -33,7 +33,7 @@ def dataVisual3():
     plt.ylabel('Points')
     plt.show()
 
-def update_data_entry():
+def dataUpdate():
     print("|-=-=-=-=-=-= Update Data Entry =-=-=-=-=-=-=|")
     print("Available columns: Driver, Nationality, Race_Wins, Points, Decade")
     driver_name = input("Enter driver name to update: ").strip()
@@ -54,6 +54,31 @@ def update_data_entry():
         print(f"|  Updated {driver_name}'s {column_name} to {new_value}|")
     except Exception as e:
         print(f"|   - Error updating data: {str(e)}             |")
+
+def addEntry():
+      driver_name = input("Enter driver name: ").strip()
+      nationality = input("Enter nationality: ").strip()
+      race_wins = input("Enter race wins: ").strip()
+      points = input("Enter points: ").strip()
+      decade = input("Enter decade: ").strip()
+                    
+      new_entry = pd.DataFrame({
+                        'Driver': [driver_name],
+                        'Nationality': [nationality],
+                        'Race_Wins': [int(race_wins)],
+                        'Points': [int(points)],
+                        'Decade': [decade]
+                    })
+      F1db = pd.concat([F1db, new_entry], ignore_index=True)
+      print(f"|   - Driver '{driver_name}' added successfully  |")
+
+def removeEntry():
+     driver_name = input("Enter driver name to remove: ").strip()
+     if driver_name in F1db['Driver'].values:
+      F1db = F1db[F1db['Driver'] != driver_name]
+      print(f"|   - Driver '{driver_name}' removed successfully|")
+     else:
+      print(f"|   - Driver '{driver_name}' not found         |")
 
     
 def UIf1data():
@@ -116,17 +141,35 @@ def UIf1data():
             print("|Returning to start...                         |")
        elif ans == '5':
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            update_data_entry()
+            dataUpdate()
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print("|Returning to start...                         |")
             time.sleep(2)
        elif ans == '6':
-               F1db.to_csv('F1Drivers_Dataset.csv', index=False)
-               print('|   - Data saved to F1Drivers_Dataset.csv   |')
-               time.sleep(2)
+             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
+             print("|   1 - add data entry                         |")
+             print("|   2 - remove data entry                      |")
+             print('|=-=-=-=-=-=-=-=-=-=-=-=UA=-=-=-=-=-=-=-=-=-=-=|')
+             time.sleep(2)
+             ans3 = input("|Enter Action according to number: ") 
+             if ans3 == '1':
+                    print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
+                    addEntry()
+                    time.sleep(2)
+                       
+             elif ans3 == '2':
+                    print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
+                    removeEntry() 
+                    time.sleep(2)
+             else:
+                         print('|     - input not recognised                   |')
+                         time.sleep(3)
+             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
+             print("|Returning to start...                         |")
        elif ans == '7':
             time.sleep(2)
-            #finish later
+            F1db.to_csv('F1Drivers_Dataset.csv', index=False)
+            print('|   - Data saved to F1Drivers_Dataset.csv      |')
             print("null")
        elif ans == '0':
             print('|Thank you for checking the database           |')
