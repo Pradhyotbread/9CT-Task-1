@@ -2,45 +2,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import time
 F1db = pd.read_csv('U:\computingTech\9CT-Task-1\F1Drivers_Dataset.csv', on_bad_lines='skip')
-driverDecade = F1db.drop(columns=['Championships', \
-    'Race_Entries', \
-    'Race_Starts', \
-    'Pole_Positions', \
-    'Race_Wins', \
-    'Podiums', \
-    'Points', \
-    'Nationality', \
-    'Pole_Rate', \
-    'Win_Rate', \
-    'Podium_Rate', \
-    'Years_Active'])
+driverDecade = F1db.drop(columns=[])
 #---Functions---------------------------------------------------------------------------------------------------------#
 
 def driverNational():
-    DriverOrigin = F1db.drop(columns=['Championships', \
-    'Race_Entries', \
-    'Race_Starts', \
-    'Pole_Positions', \
-    'Race_Wins', \
-    'Podiums', \
-    'Points', \
-    'Decade', \
-    'Pole_Rate', \
-    'Win_Rate', \
-    'Podium_Rate', \
-    'Years_Active'])
+    DriverOrigin = F1db.drop(columns=[])
     print(DriverOrigin)
 
 def DataMain():
-    TestedData = F1db.drop(columns=['Championships', \
-    'Race_Entries', \
-    'Race_Starts', \
-    'Pole_Positions', \
-    'Race_Wins', \
-    'Podiums', \
-    'Pole_Rate', 
-    'Podium_Rate', \
-    'Years_Active'])
+    TestedData = F1db.drop(columns=[])
     print(TestedData)
 
 def preview():
