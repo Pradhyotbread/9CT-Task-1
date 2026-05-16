@@ -68,6 +68,7 @@ def dataUpdate():
         print(f"|   - Error updating data: {str(e)}         |")
 
 def addEntry():
+      global F1db
       print("|=-=-=-=-=-=-=-=-=-=-=-=UA=-=-=-=-=-=-=-=-=-=-=|")
       driver_name = input("Enter driver name: ").strip().title()
       nationality = input("Enter nationality: ").strip().title()
@@ -75,17 +76,25 @@ def addEntry():
       points = input("Enter points: ").strip()
       decade = input("Enter decade: ").strip().title()
                     
+      try:
+          race_wins = int(race_wins)
+          points = int(points)
+      except ValueError:
+          print("|   - Race wins and points must be whole numbers. |")
+          return
+
       new_entry = pd.DataFrame({
                         'Driver': [driver_name],
                         'Nationality': [nationality],
-                        'Race_Wins': [int(race_wins)],
-                        'Points': [int(points)],
+                        'Race_Wins': [race_wins],
+                        'Points': [points],
                         'Decade': [decade]
                     })
       F1db = pd.concat([F1db, new_entry], ignore_index=True)
       print(f"|   - Driver '{driver_name}' added           |")
 
 def removeEntry():
+     global F1db
      print("|=-=-=-=-=-=-=-=-=-=-=-=UA=-=-=-=-=-=-=-=-=-=-=|")
      driver_name = input("Enter driver name to remove: ").strip().title()
      if driver_name in F1db['Driver'].values:
