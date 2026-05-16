@@ -17,15 +17,27 @@ def dataVisual1():
     plt.kind = 'bar'
     plt.show()
 
-dataVisual1()
+def dataVisual2():
+    F1db.plot(x='Nationality', y='Points', kind='bar')
+    plt.title('lifetime points by Nationality')
+    plt.xlabel('Nationality')
+    plt.ylabel('Points')
+    plt.show()
 
+def dataVisual3():
+    F1db.plot(x='Decade', y='Points', kind='bar')
+    plt.title('lifetime points by decade')
+    plt.xlabel('Decade')
+    plt.ylabel('Points')
+    plt.show()
+    
 def UIf1data():
     UI = "null"
     while UI != 'finished':
        print("|-=-=-=-=-=-= F1 Driver's Dataset =-=-=-=-=-=-=|")
        print("|    1 - view Dataset: Applied Data            |")
        print("|    2 - view dataset: Full data               |")
-       print("|    3 - View visualisation                    |")
+       print("|    3 - View visualisations                    |")
        print("|    4 - Search or filter data                 |")
        print("|    5 - Update a data entry                   |")
        print("|    6 - Save changes                          |")
@@ -48,7 +60,28 @@ def UIf1data():
        elif ans == '3':
             time.sleep(2)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
-            dataVisual1()
+            print('|   1 - data visualisation: Points by driver   |')
+            print('|   2 - data visualisation: points by nation   |')
+            print('|   3 - data visualisation: points by decade   |')
+            print('|=-=-=-=-=-=-=-=-=-=-=-UA=-=-=-=-=-=--=-=-=-=-=|')
+            ans2 = input("|Enter Action according to number: ")
+            if ans2 == '1':
+                    time.sleep(2)
+                    print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
+                    dataVisual1()
+            elif ans2 == '2':
+                    time.sleep(2)
+                    print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
+                    #unfinished value
+                    dataVisual2()
+            elif ans2 == '3':
+                    time.sleep(2)
+                    print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
+                    #unfinished value
+                    dataVisual3()
+            else:
+                    print('|     - input not recognised                   |')
+                    time.sleep(3)
             print('|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=|')
             print("|Returing to start...                          |")
        elif ans == '4':
